@@ -4,7 +4,7 @@ A self-serve CompTIA exam retake study planner. A student enters their score and
 
 Built for the Cyber Warrior Program (CWP) at MyComputerCareer, where 30+ students across 5 certifications need personalized retake plans throughout a 19-week cohort — this replaces hand-building one for every student, every exam, every time.
 
-**[Try it live →](#)** *(update this link once deployed to GitHub Pages)*
+**[Try it live →](https://shanemckenney.github.io/CWP-Retake-Ops-Planner/)** *(update this link once deployed to GitHub Pages)*
 
 ---
 
