@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "1.1",
+    "domain": "1.0",
+    "title": "Explain common operating system (OS) types and their purposes",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Filesystem-to-OS matching is the trap here \u2014 students default to 'NTFS everywhere.' Know which filesystem belongs to which OS natively, and why ext4/XFS/APFS aren't interchangeable with NTFS.",
+    "checklist": [
+      "Windows / Linux / macOS / Chrome OS (workstation OSs)",
+      "iPadOS / iOS / Android (mobile OSs)",
+      "NTFS (Windows native)",
+      "ReFS (Windows, resilience-focused)",
+      "FAT32 (legacy, cross-platform, 4GB file limit)",
+      "ext4 (Linux native)",
+      "XFS (Linux, high-performance)",
+      "APFS (macOS native)",
+      "exFAT (cross-platform, no 4GB limit, no journaling)",
+      "Vendor EOL and update limitations",
+      "Cross-OS compatibility concerns"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A technician needs to format a USB drive that will move large (>10GB) video files between a Windows PC and a Mac. Which filesystem should they choose?",
+        "options": [
+          "NTFS",
+          "FAT32",
+          "exFAT",
+          "ext4"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "Which filesystem is the native, journaling filesystem for modern macOS?",
+        "options": [
+          "HFS+",
+          "APFS",
+          "exFAT",
+          "XFS"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "A vendor announces a product has reached EOL. What's the practical support risk a technician should flag to a customer still running it?",
+        "a": "No more security patches or vendor support \u2014 known vulnerabilities stay unpatched indefinitely, so continuing to run it is a growing security liability, not just an inconvenience."
+      }
+    ]
+  },
+  {
+    "id": "1.2",
+    "domain": "1.0",
+    "title": "Given a scenario, perform OS installations and upgrades in a diverse environment",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "GPT vs. MBR and the boot-method list are the two things this objective loves to test as PBQs. Know that GPT is required for drives over 2TB and supports UEFI boot; MBR is legacy/BIOS.",
+    "checklist": [
+      "Boot methods: USB, network, solid-state/flash, internet-based, external/hot-swappable, internal HDD partition, multiboot",
+      "Clean install vs. upgrade vs. image deployment vs. remote network install vs. zero-touch deployment",
+      "Recovery partition / repair installation",
+      "Third-party driver considerations",
+      "GPT vs. MBR partitioning",
+      "Drive format",
+      "Upgrade considerations: backup files/preferences, app & driver backward compatibility, hardware compatibility",
+      "Feature updates and product life cycle"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A technician is imaging 40 new lab workstations at once with zero manual input at each machine. Which deployment method fits?",
+        "options": [
+          "Clean install",
+          "Zero-touch deployment",
+          "Repair installation",
+          "Multiboot"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "Why does a drive larger than 2TB require GPT instead of MBR?",
+        "a": "MBR's partition table can only address up to 2TB and supports a maximum of 4 primary partitions; GPT removes that size ceiling and supports far more partitions, which is why it's required for large modern drives and UEFI boot."
+      },
+      {
+        "type": "short",
+        "q": "Before upgrading a user's OS in place, what three compatibility checks should you run first?",
+        "a": "Application/driver backward compatibility, hardware compatibility (CPU/RAM/TPM requirements), and confirming user files/preferences are backed up in case the upgrade needs to be rolled back."
+      }
+    ]
+  },
+  {
+    "id": "1.3",
+    "domain": "1.0",
+    "title": "Compare and contrast basic features of Microsoft Windows editions",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Home vs. Pro is the highest-yield distinction: Pro adds BitLocker, RDP (as host), gpedit.msc, and domain-join \u2014 Home has none of those. N versions just mean Media Player/related tech removed for EU compliance, not a feature tier.",
+    "checklist": [
+      "Windows 10 editions: Home, Pro, Pro for Workstations, Enterprise",
+      "Windows 11 editions: Home, Pro, Enterprise",
+      "N versions (EU media-feature-stripped, not a security tier)",
+      "Domain vs. workgroup capability",
+      "Desktop styles/UI differences",
+      "RDP host availability (Pro+ only)",
+      "RAM support limitations by edition",
+      "BitLocker availability (Pro+ only)",
+      "gpedit.msc availability (Pro+ only)",
+      "In-place upgrade vs. clean install",
+      "TPM and UEFI hardware requirements"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A user on Windows 10 Home wants to encrypt their drive with BitLocker and can't find the option. Why?",
+        "options": [
+          "BitLocker requires a third-party license",
+          "BitLocker is Pro-and-above only; Home doesn't include it",
+          "BitLocker was removed in Windows 10",
+          "Their drive isn't GPT formatted"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which is required for a device to accept incoming Remote Desktop Protocol connections as a host?",
+        "options": [
+          "Windows 10/11 Home",
+          "Windows 10/11 Pro or higher",
+          "Any edition, with a registry edit",
+          "A domain-joined VM only"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "What actually distinguishes an 'N' version of Windows from the standard version?",
+        "a": "N versions have Windows Media Player and related media technologies stripped out to comply with EU antitrust requirements \u2014 it's a regional compliance variant, not a different feature or security tier."
+      }
+    ]
+  },
+  {
+    "id": "1.4",
+    "domain": "1.0",
+    "title": "Given a scenario, use Microsoft Windows operating system features and tools",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "The .msc list is pure memorization and shows up constantly as PBQs \u2014 know which snap-in solves which symptom (e.g., a service that won't start \u2192 services.msc via Task Manager or Computer Management, not Device Manager).",
+    "checklist": [
+      "Task Manager tabs: Services, Startup, Performance, Processes, Users",
+      "Event Viewer (eventvwr.msc)",
+      "Disk Management (diskmgmt.msc)",
+      "Task Scheduler (taskschd.msc)",
+      "Device Manager (devmgmt.msc)",
+      "Certificate Manager (certmgr.msc)",
+      "Local Users and Groups (lusrmgr.msc)",
+      "Performance Monitor (perfmon.msc)",
+      "Group Policy Editor (gpedit.msc)",
+      "System Information (msinfo32.exe)",
+      "Resource Monitor (resmon.exe)",
+      "System Configuration (msconfig.exe)",
+      "Disk Cleanup (cleanmgr.exe)",
+      "Disk Defragment (dfrgui.exe)",
+      "Registry Editor (regedit.exe)"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A technician needs to see which startup programs are slowing boot time on Windows 11. Where do they look first?",
+        "options": [
+          "msconfig.exe",
+          "Task Manager > Startup tab",
+          "Disk Management",
+          "Event Viewer"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which tool would you use to shrink or extend a partition without reformatting the whole drive?",
+        "options": [
+          "diskmgmt.msc",
+          "cleanmgr.exe",
+          "dfrgui.exe",
+          "certmgr.msc"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "short",
+        "q": "A user reports repeated application crashes but can't describe what's happening. Which tool gives you a timestamped log of the actual error, and how do you open it?",
+        "a": "Event Viewer, opened via eventvwr.msc \u2014 check the Application log for error-level entries around the time of each crash to find the specific fault module or error code."
+      }
+    ]
+  },
+  {
+    "id": "1.5",
+    "domain": "1.0",
+    "title": "Given a scenario, use the appropriate Microsoft command-line tools",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Group these by function instead of memorizing a flat list: navigation (cd/dir), network (ipconfig/ping/netstat/nslookup/tracert/pathping/net use), disk (chkdsk/format/diskpart), file (md/rmdir/robocopy), informational (hostname/whoami/winver), and OS management (sfc/gpupdate/gpresult). sfc and diskpart are the two most commonly tested for actual repair scenarios.",
+    "checklist": [
+      "Navigation: cd, dir",
+      "Network: ipconfig, ping, netstat, nslookup, net use, tracert, pathping",
+      "Disk management: chkdsk, format, diskpart",
+      "File management: md, rmdir, robocopy",
+      "Informational: hostname, net user, winver, whoami, [command] /?",
+      "OS management: gpupdate, gpresult, sfc"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A user's system files appear corrupted after a bad shutdown, and File Explorer errors are inconsistent. Which command scans and repairs protected system files?",
+        "options": [
+          "chkdsk /f",
+          "sfc /scannow",
+          "diskpart",
+          "gpupdate /force"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which tool would you use to create, delete, and manage disk partitions from the command line?",
+        "options": [
+          "diskpart",
+          "format",
+          "chkdsk",
+          "robocopy"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "short",
+        "q": "A Group Policy change was just pushed from the domain controller, but the user's machine hasn't picked it up. What command forces an immediate refresh, and what command lets you verify which policies actually applied?",
+        "a": "gpupdate /force pushes an immediate refresh of Group Policy; gpresult (e.g., gpresult /r) shows a summary of which policies actually applied to that user/machine, which is the go-to for confirming the push worked."
+      }
+    ]
+  },
+  {
+    "id": "1.6",
+    "domain": "1.0",
+    "title": "Given a scenario, configure Microsoft Windows settings",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is a long, flat list of Control Panel/Settings categories rather than a conceptually hard objective \u2014 treat it as recognition practice: given a symptom, know which settings panel houses the fix (e.g., file extensions not showing \u2192 File Explorer Options > View).",
+    "checklist": [
+      "Internet Options, Devices and Printers, Programs and Features",
+      "Network and Sharing Center, System, Windows Defender Firewall",
+      "Mail, Sound, Device Manager, Indexing Options, Administrative Tools",
+      "File Explorer Options: view hidden files, hide extensions, general/view options",
+      "Power Options: hibernate, power plans, sleep/suspend, standby, lid-close behavior, fast startup, USB selective suspend",
+      "Ease of Access, Time and Language, Update and Security, Personalization",
+      "Apps, Privacy, Devices, Network and Internet, Gaming, Accounts"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A user wants their laptop to stay awake and keep playing music when they close the lid. Which setting controls this?",
+        "options": [
+          "Power plan selection",
+          "Choose what closing the lid does",
+          "USB selective suspend",
+          "Fast startup"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "A user can't see the .docx extension on any of their files and wants ransomware-disguised .exe files to be easier to spot. Where do you fix this?",
+        "a": "File Explorer Options > View tab \u2014 uncheck 'Hide extensions for known file types' so all extensions display."
+      }
+    ]
+  },
+  {
+    "id": "1.7",
+    "domain": "1.0",
+    "title": "Given a scenario, configure Microsoft Windows networking features on a client/desktop",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Static vs. dynamic IP configuration and domain-vs-workgroup are the practical core here \u2014 everything else (VPN, proxy, metered connections) is largely recognition-level.",
+    "checklist": [
+      "Domain joined vs. workgroup: shared resources, printers, file servers, mapped drives",
+      "Local OS firewall settings: app restrictions/exceptions, configuration",
+      "Client network config: IP addressing scheme, DNS, subnet mask, gateway, static vs. dynamic",
+      "Establishing connections: VPN, wireless, wired, WWAN/cellular",
+      "Proxy settings",
+      "Public vs. private network",
+      "File Explorer network-path navigation",
+      "Metered connections and limitations"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's laptop keeps getting a different IP address every time it reconnects, and it needs to stay fixed for a network printer to always find it. What's the fix, and what four values do you need to set manually?",
+        "a": "Configure a static IP instead of relying on DHCP \u2014 you need the IP address itself, the subnet mask, the default gateway, and the DNS server address."
+      },
+      {
+        "type": "short",
+        "q": "Why does Windows ask whether a new network is 'public' or 'private,' and what does that choice actually change?",
+        "a": "It changes the local firewall profile and network discovery behavior \u2014 'private' relaxes restrictions for trusted home/office networks (file sharing, discoverability), while 'public' locks the machine down for untrusted networks like coffee-shop Wi-Fi."
+      }
+    ]
+  },
+  {
+    "id": "1.8",
+    "domain": "1.0",
+    "title": "Explain common features and tools of the macOS/desktop operating system",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Students coming from Windows-only backgrounds mix up macOS-specific terminology constantly \u2014 Finder isn't File Explorer with a different name conceptually (no drive letters, different permissions model), and Keychain/FileVault map to credential-manager/BitLocker concepts but aren't identical.",
+    "checklist": [
+      "App install/uninstall: .dmg, .pkg, .app file types; App Store; uninstall process",
+      "System folders: /Applications, /Users, /Library, /System, /Users/Library",
+      "Apple ID and corporate restrictions",
+      "Best practices: backups, antivirus, updates/patches, Rapid Security Response (RSR)",
+      "System Settings: Displays, Networks, Printers, Scanners, Privacy, Accessibility, Time Machine",
+      "Features: multiple desktops, Mission Control, Keychain, Spotlight, iCloud (iMessage/FaceTime/Drive), Gestures, Finder, Dock, Continuity",
+      "Disk Utility, FileVault, Terminal, Force Quit"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A Mac user wants to encrypt their entire startup disk. Which macOS feature is the equivalent of Windows BitLocker?",
+        "options": [
+          "Keychain",
+          "FileVault",
+          "Gatekeeper",
+          "Time Machine"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which macOS feature stores and auto-fills saved passwords and Wi-Fi credentials system-wide?",
+        "options": [
+          "Keychain",
+          "Spotlight",
+          "Mission Control",
+          "iCloud Drive"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "short",
+        "q": "What is Rapid Security Response (RSR) on macOS, and why does it matter separately from a normal OS update?",
+        "a": "RSR is a lightweight, fast-deploying patch mechanism Apple uses to push urgent security fixes between full OS updates, without requiring a full system update/restart cycle \u2014 it matters because it closes critical vulnerabilities faster than waiting for the next major point release."
+      }
+    ]
+  },
+  {
+    "id": "1.9",
+    "domain": "1.0",
+    "title": "Identify common features and tools of the Linux client/desktop operating system",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "High-yield and easy to over- or under-study \u2014 group commands by task the same way as the Windows CLI objective: file management (ls/pwd/mv/cp/rm/chmod/chown/grep/find), package management (apt/dnf), network (ip/ping/curl/dig/traceroute), and know /etc/passwd vs /etc/shadow cold, since that pairing is a favorite exam trap.",
+    "checklist": [
+      "File management: ls, pwd, mv, cp, rm, chmod, chown, grep, find",
+      "Filesystem management: fsck, mount",
+      "Administrative: su, sudo",
+      "Package management: apt, dnf",
+      "Network: ip, ping, curl, dig, traceroute",
+      "Informational: man, cat, top, ps, du, df",
+      "Text editor: nano",
+      "Config files: /etc/passwd, /etc/shadow, /etc/hosts, /etc/fstab, /etc/resolv.conf",
+      "OS components: systemd, kernel, bootloader",
+      "Root account"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which Linux file stores actual hashed user passwords, as opposed to just usernames and account metadata?",
+        "options": [
+          "/etc/passwd",
+          "/etc/shadow",
+          "/etc/hosts",
+          "/etc/fstab"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "A technician needs to change file permissions on a script so the owner can execute it. Which command does that?",
+        "options": [
+          "chown",
+          "chmod",
+          "grep",
+          "mount"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "What's the practical difference between su and sudo, and why is sudo generally the safer choice for day-to-day admin tasks?",
+        "a": "su switches you to another user account entirely (typically root) for the whole session, while sudo runs a single command with elevated privileges and then returns to your normal account \u2014 sudo limits the blast radius of a mistake and creates a clearer audit trail of exactly which commands were run as root."
+      }
+    ]
+  },
+  {
+    "id": "1.10",
+    "domain": "1.0",
+    "title": "Given a scenario, install applications according to requirements",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is a requirements-gathering objective, not a deep technical one \u2014 the exam wants you to recognize which system spec (RAM, CPU, VRAM, storage, 32 vs 64-bit) would block an install, and which distribution method (physical media, ISO, downloadable package, image deployment) fits a given scenario.",
+    "checklist": [
+      "System requirements: 32 vs 64-bit, dedicated vs. integrated graphics, VRAM, RAM, CPU, external hardware tokens, storage, app-to-OS compatibility",
+      "Distribution methods: physical media/mountable ISO, downloadable package, image deployment",
+      "Impact considerations for new apps: device, network, operation, business"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user tries to install a 64-bit-only application on an older machine and it fails immediately. What should you check first?",
+        "a": "Whether the installed OS itself is 32-bit or 64-bit \u2014 a 64-bit application cannot run on a 32-bit OS regardless of the CPU's actual capability, so confirm the OS architecture before troubleshooting anything else."
+      },
+      {
+        "type": "short",
+        "q": "Before rolling out a new line-of-business application across 200 workstations, what four categories of impact should be considered beyond 'does it install'?",
+        "a": "Device impact (resource load on each machine), network impact (bandwidth/licensing calls), operational impact (workflow disruption during rollout), and business impact (cost, downtime, compliance)."
+      }
+    ]
+  },
+  {
+    "id": "1.11",
+    "domain": "1.0",
+    "title": "Given a scenario, install and configure cloud-based productivity tools",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Straightforward recall of SaaS productivity categories \u2014 email, storage/sync, collaboration tools (spreadsheets, videoconferencing, presentations, word processing, IM), identity sync, and licensing assignment. Low depth, quick review.",
+    "checklist": [
+      "Email systems",
+      "Storage and sync/folder settings",
+      "Collaboration tools: spreadsheets, videoconferencing, presentation, word processing, instant messaging",
+      "Identity synchronization",
+      "Licensing assignment"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A company wants new employees to automatically get the correct Microsoft 365 apps the moment their account is created, without an admin manually assigning each one. What handles this?",
+        "a": "Licensing assignment tied to identity \u2014 typically through group-based licensing where the user's account is added to a group and the license (and associated app access) is applied automatically."
+      }
+    ]
+  },
+  {
+    "id": "2.1",
+    "domain": "2.0",
+    "title": "Summarize various security measures and their purposes",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "This objective packs physical security, logical security, and authentication concepts into one list \u2014 the biggest trap is MFA factor types (email, hardware token, authenticator app, SMS, voice call, TOTP, OTP) getting confused with each other. Know that TOTP is time-based and app-generated; OTP/passcode is broader and can be delivered any way.",
+    "checklist": [
+      "Physical security: bollards, access control vestibule, badge reader, video surveillance, alarm systems, motion sensors, door locks, equipment locks, guards, fences",
+      "Physical access: key fobs, smart cards, mobile digital key, biometrics (retina/fingerprint/palm/facial/voice), lighting, magnetometers",
+      "Logical security: least privilege, Zero Trust, ACLs, MFA (email/hardware token/authenticator app/SMS/voice/TOTP/OTP), SAML, SSO",
+      "Just-in-time access / PAM",
+      "MDM, DLP, IAM, directory services"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which MFA method generates a new code every 30-60 seconds directly on the user's device without needing cell signal?",
+        "options": [
+          "SMS",
+          "Voice call",
+          "TOTP via authenticator app",
+          "Email"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "A security policy grants a contractor access to a sensitive system only for the two hours they need it, then automatically revokes it. What model does this describe?",
+        "options": [
+          "Zero Trust",
+          "Just-in-time access",
+          "Directory services",
+          "Single sign-on"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "What's the core principle behind Zero Trust, and how does it differ from a traditional perimeter-based security model?",
+        "a": "Zero Trust assumes no user or device is inherently trustworthy, even inside the network perimeter, so every access request is verified regardless of origin \u2014 traditional models trust anything already inside the firewall by default, which Zero Trust treats as a flawed assumption."
+      }
+    ]
+  },
+  {
+    "id": "2.2",
+    "domain": "2.0",
+    "title": "Given a scenario, configure and apply basic Microsoft Windows OS security settings",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "NTFS vs. share permissions is the single most commonly confused pairing in this objective \u2014 share permissions apply only over the network, NTFS permissions apply locally AND over the network, and when both exist together, the MORE restrictive one wins.",
+    "checklist": [
+      "Defender Antivirus: activate/deactivate, update definitions",
+      "Firewall: activate/deactivate, port security, application security",
+      "User/groups: local vs. Microsoft account, standard, administrator, guest, power user",
+      "Log-in options: password, PIN, fingerprint, facial recognition, SSO, Windows Hello",
+      "NTFS vs. share permissions: file/folder attributes, inheritance",
+      "Run as administrator vs. standard user; UAC",
+      "BitLocker, BitLocker-To-Go, EFS",
+      "Active Directory: joining domain, log-in scripts, moving OUs, home folders, Group Policy, security groups, folder redirection"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A file has NTFS permissions set to 'Full Control' for a user, but the share permission on the folder it lives in is set to 'Read Only.' What access does the user actually get when connecting over the network?",
+        "a": "Read Only \u2014 when NTFS and share permissions conflict, the more restrictive of the two always wins for network access. Locally (not over the network), only NTFS permissions apply."
+      },
+      {
+        "type": "mc",
+        "q": "Which built-in Windows account should always be disabled or renamed as a hardening step?",
+        "options": [
+          "Standard user",
+          "Guest account",
+          "Power user",
+          "Local administrator (renamed, not disabled)"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "What does UAC actually protect against, and why does it prompt even for an administrator account?",
+        "a": "UAC prevents software (including malware) from silently making system-level changes without explicit user consent \u2014 it prompts even administrators because admin accounts run with standard-user privileges by default until elevation is explicitly approved, limiting the damage a compromised session or malicious process can do."
+      }
+    ]
+  },
+  {
+    "id": "2.3",
+    "domain": "2.0",
+    "title": "Compare and contrast wireless security protocols and authentication methods",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "WPA3 > WPA2 > TKIP is the encryption progression to know cold \u2014 TKIP is deprecated/weak and shouldn't appear in any modern recommendation. RADIUS vs. TACACS+ is the other common mix-up: RADIUS encrypts only the password in transit, TACACS+ encrypts the entire packet.",
+    "checklist": [
+      "Protocols/encryption: WPA2, WPA3, TKIP (deprecated), AES",
+      "Authentication: RADIUS, TACACS+, Kerberos, Multifactor"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which wireless security protocol should never be recommended for a modern deployment due to known cryptographic weaknesses?",
+        "options": [
+          "WPA3",
+          "AES",
+          "TKIP",
+          "WPA2"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "short",
+        "q": "What's the practical difference between RADIUS and TACACS+ that would make an admin choose one over the other for network device authentication?",
+        "a": "RADIUS encrypts only the password portion of the authentication packet and combines authentication/authorization into one step, while TACACS+ encrypts the entire packet and separates authentication, authorization, and accounting \u2014 TACACS+ is generally preferred for administrative access to network devices because of that fuller encryption and granularity."
+      }
+    ]
+  },
+  {
+    "id": "2.4",
+    "domain": "2.0",
+    "title": "Summarize types of malware and tools/methods for detection, removal, and prevention",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Rootkit vs. Trojan vs. fileless malware is the classic confusion trio: a Trojan disguises itself as legitimate software, a rootkit hides at a privileged system level to conceal other malware, and fileless malware lives in memory/scripts without ever writing a file to disk \u2014 which is exactly why traditional signature-based antivirus struggles with it.",
+    "checklist": [
+      "Malware types: Trojan, rootkit, virus, spyware, ransomware, keylogger, boot sector virus, cryptominer, stalkerware, fileless",
+      "Adware / PUP",
+      "Tools/methods: Recovery Console/environment, EDR, MDR, XDR, antivirus, anti-malware, email security gateway, software firewalls, user education/antiphishing training, OS reinstallation"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Malware that hides deep in the OS to conceal the presence of other malicious processes, often surviving even a reinstall attempt if not fully removed, is called a:",
+        "options": [
+          "Trojan",
+          "Rootkit",
+          "Keylogger",
+          "Cryptominer"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which type of malware operates entirely in memory using legitimate system tools/scripts, leaving no file for traditional antivirus to scan?",
+        "options": [
+          "Boot sector virus",
+          "Fileless malware",
+          "Stalkerware",
+          "Adware"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "What's the functional difference between EDR and XDR that a technician should know when recommending a detection solution?",
+        "a": "EDR (endpoint detection and response) focuses detection and response on individual endpoints/devices, while XDR (extended detection and response) correlates data across endpoints, network, email, and cloud sources into one unified view \u2014 XDR gives broader visibility across the whole environment, not just a single device."
+      }
+    ]
+  },
+  {
+    "id": "2.5",
+    "domain": "2.0",
+    "title": "Compare and contrast common social engineering attacks, threats, and vulnerabilities",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "The phishing sub-types (vishing, smishing, QR code phishing, spear phishing, whaling) are almost always tested by delivery channel or target, not by name recognition \u2014 voice=vishing, SMS=smishing, QR=QR code phishing, targeted individual=spear phishing, targeted executive=whaling.",
+    "checklist": [
+      "Social engineering: phishing (vishing, smishing, QR code phishing, spear phishing, whaling), shoulder surfing, tailgating, impersonation, dumpster diving",
+      "Threats: DoS, DDoS, evil twin, zero-day, spoofing, on-path attack, brute-force, dictionary attack, insider threat, SQL injection, XSS, BEC, supply chain/pipeline attack",
+      "Vulnerabilities: non-compliant systems, unpatched systems, unprotected systems, EOL, BYOD"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "An attacker sends a phishing email specifically crafted to target a company's CFO, referencing real internal project names to seem legitimate. This is:",
+        "options": [
+          "Vishing",
+          "Whaling",
+          "Smishing",
+          "Tailgating"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "A rogue Wi-Fi access point is set up with the same SSID as a coffee shop's legitimate network to intercept traffic. This is an example of a(n):",
+        "options": [
+          "Evil twin",
+          "On-path attack",
+          "Zero-day attack",
+          "Dictionary attack"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "short",
+        "q": "An employee receives an invoice-payment email that appears to come from their own CEO's real email address, urgently requesting a wire transfer. What's this attack called, and what makes it different from generic phishing?",
+        "a": "Business email compromise (BEC) \u2014 it's different because it typically involves a compromised or convincingly spoofed executive account and targets a specific financial process, relying on authority and urgency rather than a generic mass-phishing lure."
+      }
+    ]
+  },
+  {
+    "id": "2.6",
+    "domain": "2.0",
+    "title": "Given a scenario, implement procedures for basic SOHO malware removal",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is a strict 10-step ordered process and shows up as a drag-and-drop/ordering PBQ almost every time. Memorize the sequence, not just the steps \u2014 quarantine comes before remediation, and re-enabling System Restore is the second-to-last step, not the first.",
+    "checklist": [
+      "1. Investigate and verify malware symptoms",
+      "2. Quarantine infected system",
+      "3. Disable System Restore (Windows Home)",
+      "4. Remediate infected systems",
+      "5. Update anti-malware software",
+      "6. Scan and removal techniques (safe mode, preinstallation environment)",
+      "7. Reimage/reinstall",
+      "8. Schedule scans and run updates",
+      "9. Enable System Restore and create a restore point",
+      "10. Educate the end user"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "Why must System Restore be disabled early in the malware removal process, before scanning and remediation?",
+        "a": "If System Restore stays active, restore points created while the system was already infected can preserve or reintroduce the malware \u2014 disabling it prevents the infection from surviving cleanup via a restore point rollback."
+      },
+      {
+        "type": "short",
+        "q": "Put these three steps in the correct order: (a) reimage/reinstall, (b) update anti-malware software, (c) quarantine the infected system.",
+        "a": "Quarantine the infected system first (isolate it from the network to stop spread), then update anti-malware software (so scans use current definitions), then reimage/reinstall if remediation and scanning don't fully resolve it."
+      }
+    ]
+  },
+  {
+    "id": "2.7",
+    "domain": "2.0",
+    "title": "Given a scenario, apply workstation security options and hardening techniques",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Treat this as a hardening checklist rather than isolated facts \u2014 for any workstation hardening scenario, run through: encryption, passwords, BIOS/UEFI password, account lockout policy, and disabling what's unused (AutoRun, guest account, unused services).",
+    "checklist": [
+      "Data-at-rest encryption",
+      "Password considerations: length, character types, uniqueness, complexity, expiration",
+      "BIOS/UEFI passwords",
+      "End-user best practices: screensaver locks, log off when not in use, secure hardware/PII/passwords, password managers",
+      "Account management: restrict permissions, restrict log-in times, disable guest account, failed-attempts lockout, timeout/screen lock, account expiration",
+      "Change default admin credentials; disable AutoRun; disable unused services"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A workstation in a shared lab keeps getting infected via auto-launching USB drives. What single setting change addresses this directly?",
+        "a": "Disable AutoRun \u2014 this stops removable media from automatically executing programs the moment it's inserted, which is a common malware vector in shared/public machines."
+      },
+      {
+        "type": "short",
+        "q": "Why is a BIOS/UEFI password considered a separate hardening layer from the Windows login password?",
+        "a": "A BIOS/UEFI password protects the firmware level itself \u2014 it prevents someone from booting to alternate media, changing boot order, or accessing firmware settings to bypass the OS login entirely, which a Windows password alone can't stop."
+      }
+    ]
+  },
+  {
+    "id": "2.8",
+    "domain": "2.0",
+    "title": "Given a scenario, apply common methods for securing mobile devices",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "MDM policy scenarios (BYOD vs. corporate-owned) are the highest-yield part \u2014 know that MDM can fully wipe a corporate device but typically only wipes the work container/profile on a BYOD device, same distinction as Core 1's mobile device objective but from the security-hardening angle instead.",
+    "checklist": [
+      "Hardening: device encryption, screen locks (facial, PIN, fingerprint, pattern, swipe), configuration profiles",
+      "Patch management: OS updates, app updates",
+      "Endpoint security software: antivirus, anti-malware, content filtering",
+      "Locator apps, remote wipes, remote backup apps, failed log-in restrictions",
+      "Policies: MDM, BYOD vs. corporate-owned, profile security requirements"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "An employee's corporate-owned phone is lost. IT wants to remotely erase everything on it immediately. Is this possible, and what tool enables it?",
+        "a": "Yes \u2014 MDM (mobile device management) on a corporate-owned device typically allows a full remote wipe of the entire device, since the organization owns and fully manages it (unlike BYOD, where wipe is usually limited to the managed work container)."
+      },
+      {
+        "type": "mc",
+        "q": "Which mobile hardening feature is specifically designed to locate a lost or stolen device on a map?",
+        "options": [
+          "Remote wipe",
+          "Locator application",
+          "Content filtering",
+          "Configuration profile"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "2.9",
+    "domain": "2.0",
+    "title": "Compare and contrast common data destruction and disposal methods",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Know which methods are truly irreversible (physical destruction) vs. reversible with the right tools (standard formatting doesn't actually erase data, it just marks it as available). Degaussing only works on magnetic media (HDDs), not SSDs.",
+    "checklist": [
+      "Physical destruction: drilling, shredding, degaussing, incineration",
+      "Recycling/repurposing best practices: erasing/wiping, low-level formatting, standard formatting",
+      "Outsourcing: third-party vendor, certification of destruction/recycling",
+      "Regulatory and environmental requirements"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Why is degaussing NOT an effective method for destroying data on an SSD?",
+        "options": [
+          "SSDs are too small to degauss",
+          "SSDs don't store data magnetically like HDDs do, so degaussing has no effect",
+          "Degaussing only works on optical media",
+          "SSDs are immune to all forms of data destruction"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "A user thinks a 'standard format' of their old hard drive is enough to make the data unrecoverable before donating the PC. Are they right?",
+        "a": "No \u2014 a standard format just marks the space as available and rebuilds the file system table without actually erasing the underlying data, so recovery tools can often still retrieve it. For real irreversible removal, they'd need secure wiping (multiple-pass overwrite), a low-level format, or physical destruction."
+      }
+    ]
+  },
+  {
+    "id": "2.10",
+    "domain": "2.0",
+    "title": "Given a scenario, apply security settings on SOHO wireless and wired networks",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This overlaps heavily with general router hardening from Core 1's networking domain but from a pure security lens \u2014 changing default passwords and disabling UPnP/unused ports are the two most commonly tested 'first steps' in a SOHO hardening scenario.",
+    "checklist": [
+      "Router settings: change default passwords, IP filtering, firmware updates, content filtering, physical placement/secure locations, UPnP, screened subnet, secure management access",
+      "Wireless specific: change SSID, disable SSID broadcast, encryption settings, guest access",
+      "Firewall settings: disable unused ports, port forwarding/mapping"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A new SOHO router is being deployed. What are the first two settings a technician should change before anything else, and why?",
+        "a": "Change the default administrator password (default credentials are publicly known and the single most common attack vector on consumer routers) and disable UPnP (it can let devices/malware open ports automatically without admin awareness) \u2014 both close obvious, well-known attack surfaces before any other configuration happens."
+      },
+      {
+        "type": "mc",
+        "q": "Why might a technician disable SSID broadcast on a SOHO network?",
+        "options": [
+          "It's required for WPA3",
+          "It stops all wireless attacks",
+          "It hides the network name from casual discovery, though it's not a strong security control on its own",
+          "It encrypts the wireless traffic"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "2.11",
+    "domain": "2.0",
+    "title": "Given a scenario, configure relevant security settings in a browser",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Mostly recognition-level \u2014 know that a valid certificate (HTTPS padlock) confirms encrypted transport and identity verification of the site, not that the site's content is safe or trustworthy, and know where each browser setting (pop-up blocker, clearing cache, private browsing, secure DNS) actually lives.",
+    "checklist": [
+      "Browser download/install: trusted vs. untrusted sources, hashing",
+      "Browser patching",
+      "Extensions/plug-ins: trusted vs. untrusted sources",
+      "Password managers",
+      "Secure connections/valid certificates",
+      "Settings: pop-up blocker, clearing browsing data/cache, private-browsing mode, sign-in/data sync, ad blockers, proxy, secure DNS",
+      "Browser feature management: enable/disable plug-ins, extensions, features"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user sees a certificate warning when visiting a familiar banking site and asks if it's safe to click through. What should you tell them, and why?",
+        "a": "Don't click through \u2014 a certificate warning means the browser can't verify the site's identity or that the connection is properly encrypted, which could mean an expired cert, a misconfigured server, or an active on-path/spoofing attack. It's safer to close the tab and navigate to the site independently to confirm."
+      },
+      {
+        "type": "short",
+        "q": "What does a valid HTTPS certificate actually guarantee, and what does it NOT guarantee?",
+        "a": "It guarantees the connection is encrypted in transit and that the site's identity has been verified by a certificate authority \u2014 it does NOT guarantee the site's content is trustworthy, safe, or free of malicious material; plenty of phishing sites use valid HTTPS certificates too."
+      }
+    ]
+  },
+  {
+    "id": "3.1",
+    "domain": "3.0",
+    "title": "Given a scenario, troubleshoot common Windows OS issues",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is symptom-to-cause matching, the same pattern Core 1's hardware troubleshooting domain used \u2014 don't memorize the list as isolated terms, practice mapping each symptom to its most likely first diagnostic step (e.g., BSOD \u2192 check Event Viewer/minidump before assuming hardware failure).",
+    "checklist": [
+      "Blue screen of death (BSOD)",
+      "Degraded performance",
+      "Boot issues",
+      "Frequent shutdowns",
+      "Services not starting",
+      "Applications crashing",
+      "Low memory warnings",
+      "USB controller resource warnings",
+      "System instability",
+      "No OS found",
+      "Slow profile load",
+      "Time drift"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's PC gives a BSOD once or twice a week with no obvious pattern. What's the first thing to check, and why start there instead of reinstalling Windows?",
+        "a": "Check Event Viewer for the minidump/stop code details around the crash time \u2014 the stop code usually points to a specific driver or hardware subsystem (RAM, disk, GPU driver), and reinstalling Windows blindly wastes time if the root cause is a failing driver or bad RAM that will just corrupt the new install too."
+      },
+      {
+        "type": "mc",
+        "q": "A desktop reports 'No OS found' on boot after a power outage. What's the most likely first thing to check?",
+        "options": [
+          "RAM seating",
+          "Boot order/drive detection in BIOS/UEFI",
+          "GPU driver version",
+          "Windows Update history"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "A user's clock keeps drifting and losing several minutes a day, causing certificate and login errors. What's the likely cause and fix?",
+        "a": "A failing CMOS battery or a misconfigured/blocked NTP time sync \u2014 replace the CMOS battery if it's hardware-related, or verify the system's time sync settings/NTP server access if it's software-related; either way, time drift like this commonly breaks certificate validation and domain authentication, which explains the downstream errors."
+      }
+    ]
+  },
+  {
+    "id": "3.2",
+    "domain": "3.0",
+    "title": "Given a scenario, troubleshoot common mobile OS and application issues",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Mostly overlaps conceptually with Core 1's mobile device troubleshooting but focused purely on OS/app-level symptoms rather than hardware \u2014 battery life and connectivity issues (Bluetooth/Wi-Fi/NFC) are the highest-yield scenario types.",
+    "checklist": [
+      "Application fails to launch / close / update / install",
+      "Slow to respond",
+      "OS fails to update",
+      "Battery life issues",
+      "Random reboots",
+      "Connectivity issues: Bluetooth, Wi-Fi, NFC",
+      "Screen does not autorotate"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's phone battery drains far faster than normal starting right after installing a new app. What's the most likely cause and first troubleshooting step?",
+        "a": "The new app is likely running excessive background processes or has a location/network permission it's abusing \u2014 check battery usage stats per app first to confirm the culprit, then review or revoke that app's background/location permissions rather than assuming a hardware battery failure."
+      },
+      {
+        "type": "mc",
+        "q": "A phone's screen won't rotate even though auto-rotate is confirmed enabled in settings. What's a likely non-software cause to also check?",
+        "options": [
+          "Battery percentage",
+          "A faulty accelerometer/orientation sensor",
+          "Wi-Fi signal strength",
+          "App update status"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "3.3",
+    "domain": "3.0",
+    "title": "Given a scenario, troubleshoot common mobile OS and application security issues",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "The confusion trap here is distinguishing legitimate performance symptoms (3.2) from security-caused symptoms that look similar \u2014 high network traffic, degraded response time, and unexpected battery drain can indicate malware/spyware, not just a buggy app, especially paired with unofficial app store installs or root/jailbreak.",
+    "checklist": [
+      "Security concerns: unofficial app stores, developer mode, root access/jailbreak, unauthorized/malicious apps, application spoofing",
+      "Common symptoms: high network traffic, degraded response time, data-usage limit notification, limited/no internet connectivity, high number of ads, fake security warnings, unexpected app behavior, leaked personal files/data"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's phone shows unusually high data usage and unexpected pop-up 'security warnings' urging them to call a number. What's actually happening, and what should the user NOT do?",
+        "a": "This is almost certainly a scareware/fake-antivirus scam, often delivered through a malicious or spoofed app \u2014 the user should not call the number or click the warning, since it's designed to trick them into installing more malware or giving up payment/personal info. The high data usage points to something already running in the background exfiltrating data or downloading more payloads."
+      },
+      {
+        "type": "mc",
+        "q": "A user jailbroke/rooted their phone to install apps outside the official store. What security risk does this primarily introduce?",
+        "options": [
+          "Faster battery drain only",
+          "Bypassing the OS's built-in app sandboxing and security restrictions, increasing exposure to malicious apps",
+          "No real risk if the apps are free",
+          "Voids the warranty but is otherwise safe"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "3.4",
+    "domain": "3.0",
+    "title": "Given a scenario, troubleshoot common personal computer (PC) security issues",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Browser-related symptoms (random pop-ups, certificate warnings, redirection, degraded browser performance) get confused with general system infection symptoms \u2014 know that browser-specific symptoms often point to a malicious extension or browser hijacker rather than a full system-level infection, which changes the remediation approach.",
+    "checklist": [
+      "Common symptoms: unable to access network, desktop alerts, false AV alerts, altered/missing/renamed system files, inability to access files, unwanted OS notifications, OS update failures",
+      "Browser-related symptoms: random/frequent pop-ups, certificate warnings, redirection, degraded browser performance"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user reports their browser keeps redirecting Google searches to unfamiliar sites, but the rest of the system seems to run fine. Where should you look first, and why not jump straight to a full malware scan?",
+        "a": "Check the browser's installed extensions/add-ons first \u2014 search redirection is a classic symptom of a malicious or hijacked browser extension, which is often faster and more targeted to remove than running a full system-wide malware scan, though a scan is still worth doing afterward to rule out anything deeper."
+      },
+      {
+        "type": "mc",
+        "q": "A user gets a legitimate-looking pop-up claiming their antivirus is out of date and urging an immediate 'update' download. This is most likely:",
+        "options": [
+          "A real update notification",
+          "A false/scareware alert designed to trick the user into installing malware",
+          "A Windows Defender feature",
+          "A browser certificate warning"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "Several personal files on a user's PC have suddenly gone missing or been renamed with strange extensions. What should you suspect, and what's the priority action?",
+        "a": "Suspect ransomware \u2014 the priority is to immediately isolate the machine from the network (disconnect Wi-Fi/Ethernet) to stop it from encrypting shared drives or spreading further, before attempting any remediation or restore."
+      }
+    ]
+  },
+  {
+    "id": "4.1",
+    "domain": "4.0",
+    "title": "Given a scenario, implement best practices associated with documentation and support systems information management",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Ticketing-system fields and document-type recognition are both straightforward recall \u2014 the exam usually gives you a scenario and asks which document type or ticket field applies, not abstract definitions.",
+    "checklist": [
+      "Ticketing systems: user info, device info, description of issues, categories, severity, escalation levels, clear/concise communication (issue description, progress notes, issue resolution)",
+      "Asset management: inventory lists, CMDB, asset tags/IDs, procurement life cycle, warranty/licensing, assigned users",
+      "Document types: incident reports, SOPs (incl. software package custom install procedure), new user/onboarding checklist, user off-boarding checklist, SLAs (internal/external), knowledge base/articles"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A recurring issue keeps getting escalated to Tier 2 with no clear notes on what Tier 1 already tried. What ticketing field/practice is being neglected, and why does it matter?",
+        "a": "Progress notes / clear written communication on the ticket \u2014 without documenting what's already been tried, each escalation forces the next technician to start from scratch, wasting time and risking repeated failed attempts."
+      },
+      {
+        "type": "mc",
+        "q": "A document listing every laptop's asset tag, assigned user, warranty expiration, and purchase date is an example of:",
+        "options": [
+          "An SOP",
+          "A CMDB/asset inventory",
+          "A knowledge base article",
+          "An SLA"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "4.2",
+    "domain": "4.0",
+    "title": "Given a scenario, apply change management procedures",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Standard vs. normal vs. emergency change type is the classic confusion point: standard changes are pre-approved/low-risk and routine, normal changes go through the full change board review, and emergency changes bypass normal approval because of urgent risk \u2014 but still require documentation and after-the-fact review.",
+    "checklist": [
+      "Documented business processes: rollback plan, backup plan, sandbox testing, responsible staff members",
+      "Change management: request forms, purpose/scope of change",
+      "Change type: standard, normal, emergency",
+      "Date/time of change: change freeze, maintenance windows",
+      "Affected systems/impact, risk analysis/risk level",
+      "Change board approvals, implementation, peer review, end-user acceptance"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A critical zero-day patch needs to be deployed tonight without waiting for the next change board meeting. This is a:",
+        "options": [
+          "Standard change",
+          "Normal change",
+          "Emergency change",
+          "Change freeze"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "short",
+        "q": "Why does every proposed change need a documented rollback plan before implementation, even for a change the team is confident about?",
+        "a": "Because if the change causes unexpected issues in production, a rollback plan lets the team quickly restore the previous known-good state rather than troubleshooting live under pressure \u2014 'confident' changes still fail sometimes, and having no rollback plan turns a recoverable mistake into extended downtime."
+      }
+    ]
+  },
+  {
+    "id": "4.3",
+    "domain": "4.0",
+    "title": "Given a scenario, implement workstation backup and recovery methods",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Full vs. incremental vs. differential is the single highest-yield confusion point in this objective: incremental backs up only what changed since the LAST backup (any type) and is fastest to create but slowest to restore; differential backs up everything changed since the LAST FULL backup, so it's a middle ground on both speed and restore time.",
+    "checklist": [
+      "Backup types: full, incremental, differential, synthetic full",
+      "Recovery: in-place/overwrite, alternative location",
+      "Backup testing: frequency",
+      "Backup rotation: onsite vs. offsite, Grandfather-Father-Son (GFS), 3-2-1 rule"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which backup type only captures changes made since the most recent backup of any kind (full or incremental)?",
+        "options": [
+          "Full",
+          "Differential",
+          "Incremental",
+          "Synthetic full"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "short",
+        "q": "Explain the 3-2-1 backup rule in your own words.",
+        "a": "Keep at least 3 total copies of your data, stored on 2 different types of media, with at least 1 copy stored offsite \u2014 this protects against media failure, local disasters, and site-wide incidents all at once, rather than relying on a single point of failure."
+      },
+      {
+        "type": "short",
+        "q": "A company restores from an incremental backup chain after a server failure. Why does the restore take longer than restoring from a full backup taken the same day would?",
+        "a": "Because an incremental restore has to reassemble the last full backup PLUS every incremental backup taken since, applying them in sequence \u2014 the more incrementals in the chain, the longer and more failure-prone the restore process becomes, compared to a differential or a same-day full backup."
+      }
+    ]
+  },
+  {
+    "id": "4.4",
+    "domain": "4.0",
+    "title": "Given a scenario, use common safety procedures",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Low-conceptual-difficulty, high-recognition objective \u2014 the exam mostly wants you to match a safety hazard scenario to the correct control (e.g., static risk \u2192 ESD strap/mat, not safety goggles).",
+    "checklist": [
+      "ESD straps and mats",
+      "Electrical safety: equipment grounding",
+      "Component handling/storage, cable management, antistatic bags",
+      "Compliance with government regulations",
+      "Personal safety: disconnect power before repair, lifting technique, fire safety, safety goggles, air filter mask"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A technician is about to install RAM into a desktop. What two ESD precautions should they take before touching the component?",
+        "a": "Wear an ESD strap connected to a grounded point (or work on an ESD mat), and touch a grounded metal surface (like the case chassis) before handling the RAM \u2014 this discharges static buildup that could otherwise silently damage sensitive components."
+      }
+    ]
+  },
+  {
+    "id": "4.5",
+    "domain": "4.0",
+    "title": "Summarize environmental impacts and local environment controls",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "MSDS disposal rules (batteries, toner) and power protection devices (UPS vs. surge suppressor) are the two testable clusters \u2014 know that a UPS provides battery backup during an outage, while a surge suppressor only protects against voltage spikes and provides no backup power.",
+    "checklist": [
+      "MSDS documentation: proper disposal of batteries, toner, other devices/assets",
+      "Temperature/humidity awareness, ventilation, location/equipment placement, dust cleanup, compressed air/vacuums",
+      "Power protection: UPS, surge suppressor"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "During a power outage, which device keeps a server running for a short period so it can shut down gracefully?",
+        "options": [
+          "Surge suppressor",
+          "UPS",
+          "MSDS",
+          "Compressed air"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "short",
+        "q": "Why can't used toner cartridges just be thrown in regular trash?",
+        "a": "Toner contains fine particulate and chemical residues that are considered hazardous or regulated waste in many jurisdictions \u2014 MSDS guidance requires proper recycling or disposal through certified channels rather than standard trash, both for environmental compliance and safety."
+      }
+    ]
+  },
+  {
+    "id": "4.6",
+    "domain": "4.0",
+    "title": "Explain the importance of prohibited content/activity and privacy, licensing, and policy concepts",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Chain of custody and order of volatility are the highest-yield items here, carried over conceptually from CySA+ but tested at a lighter, more procedural level \u2014 know that order of volatility means collecting the MOST volatile evidence first (RAM before disk, disk before backups) since it disappears fastest.",
+    "checklist": [
+      "Incident response: chain of custody, informing management/law enforcement, copy of drive (integrity/preservation), incident documentation, order of volatility",
+      "Licensing/DRM/EULA: valid licenses, perpetual license, personal vs. corporate use, open-source license",
+      "NDA/MNDA",
+      "Regulated data: credit card info, gov-issued ID, PII, healthcare data, data retention requirements",
+      "Acceptable use policy (AUP)",
+      "Regulatory/business compliance requirements, splash screens"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A technician investigating a policy violation seizes a workstation. What's the purpose of maintaining chain of custody documentation for that machine going forward?",
+        "a": "Chain of custody creates a documented, unbroken record of who had possession of the evidence and when, which is essential if the case leads to legal or disciplinary action \u2014 without it, the integrity of the evidence can be challenged and potentially thrown out."
+      },
+      {
+        "type": "mc",
+        "q": "When collecting digital evidence, which should be captured FIRST, according to order of volatility?",
+        "options": [
+          "Data on backup tapes",
+          "RAM contents",
+          "Data on the hard drive",
+          "Printed logs"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "4.7",
+    "domain": "4.0",
+    "title": "Given a scenario, use proper communication techniques and professionalism",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is soft-skills scenario recognition, same style as Core 1's customer-service-adjacent content \u2014 the exam gives a difficult-customer scenario and asks what NOT to do (argue, dismiss, be judgmental) as often as what to do.",
+    "checklist": [
+      "Professional appearance/attire (formal vs. business casual)",
+      "Avoid jargon/acronyms/slang; positive attitude; active listening; cultural sensitivity; professional titles",
+      "Punctuality; avoid distractions (personal calls, texting, interruptions)",
+      "Handling difficult customers: don't argue/be defensive, don't dismiss issues, don't be judgmental, clarify with open-ended questions",
+      "Set/meet expectations, offer repair/replacement options, provide documentation, follow up",
+      "Handle confidential/private materials appropriately"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A frustrated customer interrupts you repeatedly and raises their voice about a recurring issue. What's the correct professional response, and what should you avoid doing?",
+        "a": "Stay calm, actively listen without interrupting back, and use open-ended questions to clarify and restate the issue to show you understand it \u2014 avoid arguing, getting defensive, or dismissing their frustration, since escalating back only makes the interaction worse and reflects poorly regardless of who's 'right.'"
+      }
+    ]
+  },
+  {
+    "id": "4.8",
+    "domain": "4.0",
+    "title": "Explain the basics of scripting",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Match file extension to language/platform, and don't skip the 'other considerations' section \u2014 it's tested as often as the extensions themselves. A script that looks correct can still unintentionally introduce malware, change system settings, or crash a system through resource mishandling.",
+    "checklist": [
+      "Script types: .bat, .ps1, .vbs, .sh, .js, .py",
+      "Use cases: basic automation, restarting machines, remapping network drives, app installation, automated backups, gathering info/data, initiating updates",
+      "Risks: unintentionally introducing malware, inadvertently changing system settings, browser/system crashes from resource mishandling"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which script file extension is native to Windows PowerShell?",
+        "options": [
+          ".sh",
+          ".ps1",
+          ".py",
+          ".js"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which script file extension would you expect to run natively in a Linux/bash environment?",
+        "options": [
+          ".bat",
+          ".vbs",
+          ".sh",
+          ".ps1"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "short",
+        "q": "A technician downloads and runs an unfamiliar .bat script from a forum to 'fix' a slow PC, without reading it first. What's the risk, beyond it simply not working?",
+        "a": "Running an unreviewed script gives it the same permissions the technician has \u2014 it could unintentionally (or maliciously) change system settings, delete files, or introduce malware, since batch scripts can execute arbitrary system commands with no built-in safety checks."
+      }
+    ]
+  },
+  {
+    "id": "4.9",
+    "domain": "4.0",
+    "title": "Given a scenario, use remote access technologies",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "RDP vs. VNC vs. SSH is the core distinction: RDP is Windows-native full remote desktop, VNC is cross-platform remote desktop (generally less secure by default), and SSH is command-line-only, not a GUI remote desktop protocol at all \u2014 a common exam trap is treating SSH as if it gives graphical access.",
+    "checklist": [
+      "Methods/tools: RDP, VPN, VNC, SSH, RMM, SPICE, WinRM",
+      "Third-party tools: screen-sharing, videoconferencing, file transfer, desktop management software",
+      "Security considerations of each access method"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which remote access protocol provides command-line-only access and does NOT provide a graphical desktop by itself?",
+        "options": [
+          "RDP",
+          "VNC",
+          "SSH",
+          "SPICE"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "short",
+        "q": "An IT team manages hundreds of endpoints remotely for patching, monitoring, and scripted maintenance \u2014 not just one-off support sessions. Which category of tool fits this best, and how is it different from a basic RDP session?",
+        "a": "RMM (remote monitoring and management) \u2014 unlike a one-to-one RDP session for interactive support, RMM tools are built for managing many endpoints at scale, running scheduled scripts, monitoring health, and pushing patches without needing an interactive session on each machine."
+      }
+    ]
+  },
+  {
+    "id": "4.10",
+    "domain": "4.0",
+    "title": "Explain basic concepts related to artificial intelligence (AI)",
+    "roi": true,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "New objective for this exam version \u2014 expect it to be tested lightly but directly. Know the core limitations (bias, hallucinations, accuracy) and the private-vs-public data distinction, since that's the practical IT-support angle: what happens to company data when an employee pastes it into a public AI tool.",
+    "checklist": [
+      "Application integration",
+      "Policy: appropriate use, plagiarism",
+      "Limitations: bias, hallucinations, accuracy",
+      "Private vs. public: data security, data source, data privacy"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "An employee pastes a customer's PII into a free public AI chatbot to help draft a response. What's the practical data risk here, from an IT support standpoint?",
+        "a": "Data entered into a public AI tool may be stored, logged, or used to train the model outside the company's control, which can violate data privacy policy and regulatory requirements around PII \u2014 this is exactly why organizations often require using only approved, private/enterprise AI tools where data handling is contractually controlled."
+      },
+      {
+        "type": "mc",
+        "q": "An AI tool confidently generates a plausible-sounding but factually incorrect answer. This is an example of:",
+        "options": [
+          "Bias",
+          "A hallucination",
+          "Plagiarism",
+          "Data privacy violation"
+        ],
+        "answer": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "id": "1.1",
+    "domain": "1.0",
+    "title": "Explain system and network architecture concepts in security operations",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "This objective is an acronym wall (MFA, SSO, PAM, CASB, PKI, DLP...). Don't just memorize expansions — know what problem each one solves, since questions test application, not spelling.",
+    "checklist": [
+      "Log ingestion: time sync, logging levels",
+      "OS concepts: Windows Registry, system hardening, file structure, processes",
+      "Infrastructure: serverless, virtualization, containerization",
+      "Network architecture: on-prem/cloud/hybrid, segmentation, zero trust, SASE, SDN",
+      "IAM: MFA, SSO, federation, PAM, passwordless, CASB",
+      "Encryption: PKI, SSL inspection",
+      "Sensitive data: DLP, PII, cardholder data (CHD)"
+    ]
+  },
+  {
+    "id": "1.2",
+    "domain": "1.0",
+    "title": "Analyze indicators of potentially malicious activity",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Core SOC-analyst muscle memory and heavily PBQ-tested. Practice sorting a given symptom into network- vs. host- vs. application-related before you try to name the attack.",
+    "checklist": [
+      "Network indicators: bandwidth spikes, beaconing, rogue devices, scans/sweeps, unusual ports",
+      "Host indicators: CPU/memory/drive spikes, unauthorized software, malicious processes, registry/file changes",
+      "Application indicators: anomalous activity, new accounts, unexpected output, service interruption",
+      "Other: social engineering, obfuscated links"
+    ]
+  },
+  {
+    "id": "1.3",
+    "domain": "1.0",
+    "title": "Use appropriate tools or techniques to determine malicious activity",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Email header analysis (SPF vs. DKIM vs. DMARC) is the single most commonly confused trio in this domain — know what each one actually validates, not just the acronym.",
+    "checklist": [
+      "Packet capture: Wireshark, tcpdump",
+      "Log analysis: SIEM, SOAR",
+      "Endpoint: EDR",
+      "DNS/IP reputation: WHOIS, AbuseIPDB",
+      "File analysis: strings, VirusTotal, hashing",
+      "Sandboxing: Joe Sandbox, Cuckoo",
+      "Email analysis: header, DKIM, DMARC, SPF, impersonation",
+      "Scripting: Python, PowerShell, regex, JSON, XML"
+    ]
+  },
+  {
+    "id": "1.4",
+    "domain": "1.0",
+    "title": "Compare and contrast threat-intelligence and threat-hunting concepts",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Threat actor types (APT vs. nation-state vs. hacktivist vs. insider) get blended together — anchor each to motive (financial, ideological, espionage, disgruntlement) rather than capability alone.",
+    "checklist": [
+      "Threat actor types: APT, hacktivist, organized crime, nation-state, script kiddie, insider, supply chain",
+      "TTPs",
+      "Confidence levels: timeliness, relevancy, accuracy",
+      "OSINT sources: social media, CERT, CSIRT, deep/dark web",
+      "Closed sources: paid feeds, information sharing orgs",
+      "Threat hunting: IoCs, honeypots, active defense"
+    ]
+  },
+  {
+    "id": "1.5",
+    "domain": "1.0",
+    "title": "Explain the importance of efficiency and process improvement in security operations",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Lower-yield, mostly conceptual — this is 'why automate' rather than 'how to automate.' Don't overinvest study time here relative to its share of a 33%-weighted domain.",
+    "checklist": [
+      "Standardizing/automating repeatable tasks",
+      "SOAR orchestration",
+      "Threat feed/data enrichment",
+      "API, webhooks, plugins integration",
+      "Single pane of glass"
+    ]
+  },
+  {
+    "id": "2.1",
+    "domain": "2.0",
+    "title": "Implement vulnerability scanning methods and concepts",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "The paired terms here (credentialed vs. non-credentialed, agent vs. agentless, active vs. passive) are the classic confusion set — build a single comparison table instead of studying each term in isolation.",
+    "checklist": [
+      "Asset discovery: map scans, device fingerprinting",
+      "Internal vs. external scanning",
+      "Agent vs. agentless",
+      "Credentialed vs. non-credentialed",
+      "Passive vs. active, static vs. dynamic (fuzzing)",
+      "Critical infrastructure: OT, ICS, SCADA",
+      "Frameworks: PCI DSS, CIS benchmarks, OWASP, ISO 27000"
+    ]
+  },
+  {
+    "id": "2.2",
+    "domain": "2.0",
+    "title": "Analyze output from vulnerability assessment tools",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Named tools get swapped constantly (Nessus vs. OpenVAS vs. Burp Suite vs. Nmap) — tie each one to its specific job: network scanner, web app scanner, or vulnerability scanner, not just 'a security tool.'",
+    "checklist": [
+      "Network scanners: Angry IP, Maltego",
+      "Web app scanners: Burp Suite, ZAP, Nikto",
+      "Vulnerability scanners: Nessus, OpenVAS",
+      "Debuggers: Immunity, GDB",
+      "Multipurpose: Nmap, Metasploit, Recon-ng",
+      "Cloud tools: Scout Suite, Prowler, Pacu"
+    ]
+  },
+  {
+    "id": "2.3",
+    "domain": "2.0",
+    "title": "Analyze data to prioritize vulnerabilities",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "CVSS scoring is the highest-yield, highest-confusion topic in this whole exam. Know what each metric (attack vector, complexity, privileges required, user interaction, scope, impact) actually measures — students who memorize the score bands without the metrics guess wrong on scenario questions.",
+    "checklist": [
+      "CVSS: attack vector, complexity, privileges required, user interaction, scope",
+      "CVSS impact: confidentiality, integrity, availability",
+      "Validation: true/false positives and negatives",
+      "Context: internal, external, isolated",
+      "Exploitability, asset value, zero-day"
+    ]
+  },
+  {
+    "id": "2.4",
+    "domain": "2.0",
+    "title": "Recommend controls to mitigate attacks and software vulnerabilities",
+    "roi": false,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "The control-type grid (managerial/operational/technical crossed with preventative/detective/responsive/corrective) is easy to blur — practice classifying a real control on both axes at once, not one axis at a time.",
+    "checklist": [
+      "Compensating controls",
+      "Control types: managerial, operational, technical",
+      "Control function: preventative, detective, responsive, corrective",
+      "Patch & config management: testing, rollback, validation",
+      "Risk treatment: accept, transfer, avoid, mitigate",
+      "Attack surface management: edge/passive discovery, pentesting, bug bounty"
+    ]
+  },
+  {
+    "id": "2.5",
+    "domain": "2.0",
+    "title": "Explain concepts related to vulnerability response, handling, and management",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "XSS (reflected vs. persistent), LFI vs. RFI, and SSRF vs. CSRF are the recurring confused pairs here — for each pair, anchor on where the attack executes and who triggers it.",
+    "checklist": [
+      "XSS: reflected vs. persistent",
+      "Overflow: buffer, integer, heap, stack",
+      "Injection flaws, CSRF, SSRF, RCE",
+      "Broken access control, privilege escalation",
+      "LFI vs. RFI",
+      "Secure coding: input validation, output encoding, session management, parameterized queries",
+      "Secure SDLC & threat modeling"
+    ]
+  },
+  {
+    "id": "3.1",
+    "domain": "3.0",
+    "title": "Explain concepts related to attack methodology frameworks",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Cyber kill chain, Diamond Model, and MITRE ATT&CK all describe attacker behavior but from different angles — know which framework you'd reach for to answer 'what phase are we in' vs. 'who/what/where' vs. 'what technique was used.'",
+    "checklist": [
+      "Cyber kill chain",
+      "Diamond Model of Intrusion Analysis",
+      "MITRE ATT&CK",
+      "OSSTMM",
+      "OWASP Testing Guide"
+    ]
+  },
+  {
+    "id": "3.2",
+    "domain": "3.0",
+    "title": "Perform incident response activities",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "This is the operational core of the exam — detection/analysis vs. containment/eradication/recovery is a clean sequence, but practice it end-to-end on a real scenario rather than studying the phases as a list.",
+    "checklist": [
+      "Detection/analysis: IoCs, evidence acquisition, chain of custody, data integrity",
+      "Containment/eradication/recovery: scope, impact, isolation, remediation, re-imaging",
+      "Compensating controls during response"
+    ]
+  },
+  {
+    "id": "3.3",
+    "domain": "3.0",
+    "title": "Explain the preparation and post-incident activity phases of the incident management life cycle",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Straightforward bookends to 3.2 — preparation happens before an incident, post-incident activity happens after. Don't let root cause analysis and lessons learned blur together; one asks why, the other asks what changes.",
+    "checklist": [
+      "Preparation: IR plan, playbooks, tabletop exercises, training, BC/DR",
+      "Post-incident: forensic analysis, root cause analysis, lessons learned"
+    ]
+  },
+  {
+    "id": "4.1",
+    "domain": "4.0",
+    "title": "Explain the importance of vulnerability management reporting and communication",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Often under-studied because it feels like common sense — it isn't tested that way. Know the specific components of a vuln management report, not just that reports exist.",
+    "checklist": [
+      "Vuln mgmt reporting: affected hosts, risk score, mitigation, recurrence, prioritization",
+      "Compliance reports, action plans",
+      "Inhibitors to remediation: MOU, SLA, legacy/proprietary systems",
+      "Metrics: trends, top 10, critical/zero-days, SLOs"
+    ]
+  },
+  {
+    "id": "4.2",
+    "domain": "4.0",
+    "title": "Explain the importance of incident response reporting and communication",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "MTTD vs. MTTR (respond) vs. MTTR (remediate) is a genuinely confusing near-acronym-collision — write out what each one measures in plain English before trying to memorize the abbreviation.",
+    "checklist": [
+      "Stakeholder communication & escalation",
+      "IR report structure: executive summary, who/what/when/where/why, timeline, impact, scope, evidence",
+      "Legal, PR, regulatory, law enforcement communication",
+      "Root cause analysis & lessons learned",
+      "Metrics: mean time to detect, respond, remediate; alert volume"
+    ]
+  }
+]

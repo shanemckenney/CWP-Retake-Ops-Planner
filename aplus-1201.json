@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "1.1",
+    "domain": "1.0",
+    "title": "Monitor mobile device hardware and use appropriate replacement techniques",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Mostly recall — know which components (battery, RAM, SSD, wireless cards) are field-replaceable vs. sealed on modern laptops/tablets.",
+    "checklist": [
+      "Battery",
+      "Keyboard/keys",
+      "RAM (SODIMM)",
+      "HDD/SSD",
+      "Wireless cards",
+      "Biometric & NFC security components",
+      "Wi-Fi antenna connector/placement",
+      "Camera/webcam",
+      "Microphone"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A customer's laptop won't hold a charge for more than 20 minutes, though it used to last hours. What would you check first, and why?",
+        "a": "The battery — sudden capacity loss is almost always a degraded or swelling battery; check for physical swelling before anything else, since a swollen battery is also a safety issue, not just a performance one."
+      },
+      {
+        "type": "short",
+        "q": "You're upgrading a laptop's RAM. What determines whether you need a SODIMM instead of a standard DIMM?",
+        "a": "Form factor, driven by space — laptops use the smaller SODIMM because there's no room for a full-size DIMM; desktops use standard DIMM."
+      },
+      {
+        "type": "short",
+        "q": "A user's fingerprint reader stopped working right after a Windows update. What do you check before assuming it's a hardware failure?",
+        "a": "Driver/firmware compatibility first — biometric readers are frequently broken by OS updates that outpace the driver, and that's far more common than the sensor itself failing."
+      }
+    ]
+  },
+  {
+    "id": "1.2",
+    "domain": "1.0",
+    "title": "Compare and contrast accessories and connectivity options for mobile devices",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Students mix up USB-C, Lightning, and NFC use cases — know which is charging/data vs. short-range pairing.",
+    "checklist": [
+      "USB / USB-C / microUSB / miniUSB",
+      "Lightning",
+      "NFC",
+      "Bluetooth",
+      "Tethering/hotspot",
+      "Stylus, headset, speakers, webcam",
+      "Docking station vs. port replicator",
+      "Trackpad/drawing pad/track points"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which connector is used exclusively on Apple mobile devices for charging and data?",
+        "options": [
+          "Lightning",
+          "USB-C",
+          "micro-USB",
+          "NFC"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "Which technology is built for short-range, tap-to-pair actions like contactless payment — not general file transfer?",
+        "options": [
+          "Tethering",
+          "Bluetooth",
+          "NFC",
+          "USB-C"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "What actually distinguishes a docking station from a port replicator?",
+        "options": [
+          "They're the same thing, just different branding",
+          "A port replicator requires proprietary drivers, a docking station never does",
+          "A docking station only duplicates existing ports; a port replicator adds new functionality",
+          "A docking station typically adds extra functionality/ports beyond what's on the laptop; a port replicator just duplicates existing ports for convenience"
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "id": "1.3",
+    "domain": "1.0",
+    "title": "Configure basic mobile device network connectivity and provide application support",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Scenario-heavy objective — practice the Bluetooth pairing sequence and MDM corporate-vs-BYOD distinction, both show up as PBQs.",
+    "checklist": [
+      "3G/4G/5G, hotspot, Wi-Fi, SIM/eSIM",
+      "Bluetooth pairing sequence: enable → pair → PIN → test",
+      "GPS vs. cellular location services",
+      "MDM: corporate vs. BYOD, policy enforcement",
+      "Sync: data caps, calendar, contacts, mail, cloud storage"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user wants to pair a new Bluetooth headset, but it's not showing up in their phone's list of available devices. Walk through the correct pairing sequence and where this is most likely failing.",
+        "a": "Enable Bluetooth on both devices → put the headset into pairing/discoverable mode → search on the phone → select the device → enter PIN if prompted → confirm and test audio. Most common failure point: the headset isn't actually in pairing mode, or it's already paired to another device and won't broadcast as available."
+      },
+      {
+        "type": "short",
+        "q": "A company issues some phones as corporate-owned and lets other employees use personal phones under BYOD. What's the key practical difference in what IT can actually control on each?",
+        "a": "On corporate-owned devices, IT can fully manage the device — wipe it, restrict apps, enforce policy across the whole phone. On BYOD, IT typically manages only a separate work profile/container holding corporate apps and data, leaving the personal side untouched — a full wipe is usually off-limits to protect the employee's personal data."
+      },
+      {
+        "type": "short",
+        "q": "A phone's maps app shows the correct location indoors with no cell signal and no Wi-Fi. What's providing that location data, and why does it still work?",
+        "a": "GPS — it relies on satellite signals, independent of cellular or Wi-Fi networks. Accuracy can still suffer indoors without assisted GPS from nearby Wi-Fi/cell towers, but it doesn't require either to function."
+      }
+    ]
+  },
+  {
+    "id": "2.1",
+    "domain": "2.0",
+    "title": "Compare and contrast TCP and UDP ports, protocols, and their purposes",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "The single highest-yield memorization item on the whole exam. Drill the port number list cold and TCP-vs-UDP by protocol.",
+    "checklist": [
+      "20-21 FTP",
+      "22 SSH",
+      "23 Telnet",
+      "25 SMTP",
+      "53 DNS",
+      "67/68 DHCP",
+      "80 HTTP",
+      "110 POP3",
+      "143 IMAP",
+      "137-139 NetBIOS/NetBT",
+      "389 LDAP",
+      "443 HTTPS",
+      "445 SMB/CIFS",
+      "3389 RDP",
+      "TCP vs. UDP behavior"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which port does SSH use for secure remote command-line access?",
+        "options": [
+          "22",
+          "23",
+          "25",
+          "21"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "Which of these protocols normally uses UDP rather than TCP?",
+        "options": [
+          "HTTP",
+          "SMTP",
+          "DNS (standard queries)",
+          "SSH"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "An admin needs to remotely control a Windows server's desktop for troubleshooting. Which port are they using?",
+        "options": [
+          "445",
+          "389",
+          "143",
+          "3389"
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "id": "2.2",
+    "domain": "2.0",
+    "title": "Explain wireless networking technologies",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "2.4GHz vs 5GHz vs 6GHz tradeoffs (range vs. speed vs. interference) get mixed up — anchor it to a real SOHO deployment scenario.",
+    "checklist": [
+      "2.4GHz vs. 5GHz vs. 6GHz tradeoffs",
+      "Channel width & regulations",
+      "Bluetooth",
+      "802.11 standards",
+      "NFC",
+      "RFID"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A user needs the longest possible range in a large house with thick walls, even if it costs them speed. Which frequency band should they prioritize?",
+        "options": [
+          "2.4GHz",
+          "5GHz",
+          "6GHz",
+          "Frequency doesn't affect range"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "Which technology is built for passive, battery-free identification — like inventory tags powered entirely by the reader's own signal?",
+        "options": [
+          "Bluetooth",
+          "NFC",
+          "RFID",
+          "802.11ac"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "Wider Wi-Fi channel widths (e.g. 80MHz vs. 20MHz) increase throughput, but come with what tradeoff in a crowded environment?",
+        "options": [
+          "Better range",
+          "More interference/overlap with neighboring networks",
+          "Lower security",
+          "Longer device battery life"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "2.3",
+    "domain": "2.0",
+    "title": "Summarize services provided by networked hosts",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Straightforward recall of server roles (DNS, DHCP, mail, syslog, AAA) — flashcard-friendly.",
+    "checklist": [
+      "DNS, DHCP, fileshare, print, mail, syslog, web, AAA, database, NTP servers",
+      "Spam gateway, UTM, load balancer, proxy",
+      "SCADA legacy/embedded systems",
+      "IoT devices"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which server type automatically assigns IP addresses to devices on a network?",
+        "options": [
+          "NTP",
+          "DHCP",
+          "AAA",
+          "DNS"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which server type keeps all devices on a network synced to the correct time?",
+        "options": [
+          "NTP",
+          "Syslog",
+          "Proxy",
+          "UTM"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "A device authenticates users, authorizes their access level, and logs their activity for accounting. What category of service is this?",
+        "options": [
+          "Load balancer",
+          "UTM",
+          "AAA",
+          "DNS"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "2.4",
+    "domain": "2.0",
+    "title": "Explain common network configuration concepts",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "DNS record types (A vs AAAA vs CNAME vs MX vs TXT/SPF/DKIM/DMARC) are consistently the most confused pairing on this exam. Build a one-page cheat table.",
+    "checklist": [
+      "DNS record types: A, AAAA, CNAME, MX, TXT (SPF/DKIM/DMARC)",
+      "DHCP: leases, reservations, scope, exclusions",
+      "VLAN",
+      "VPN"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which DNS record type maps a domain name to an IPv6 address?",
+        "options": [
+          "CNAME",
+          "MX",
+          "AAAA",
+          "A"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "A domain's TXT record contains an SPF entry. What's it actually for?",
+        "options": [
+          "Load balancing",
+          "Canonical name alias",
+          "Encrypting email content",
+          "Specifying which mail servers are authorized (SPF)"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "How does a DHCP reservation differ from a standard DHCP lease?",
+        "options": [
+          "Reservation ties to a specific device via MAC; lease pulls from the pool",
+          "No real difference",
+          "Only applies to wireless",
+          "Reservation expires quickly, lease is permanent"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "2.5",
+    "domain": "2.0",
+    "title": "Compare and contrast common networking hardware devices",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Know what each device does at a glance — router vs. switch vs. access point vs. firewall — plus managed vs. unmanaged switches.",
+    "checklist": [
+      "Router vs. switch (managed/unmanaged)",
+      "Access point",
+      "Patch panel",
+      "Firewall",
+      "PoE injector/switch/standards",
+      "Cable modem vs. DSL vs. ONT",
+      "NIC & MAC address"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "What's the key functional difference between a router and a switch?",
+        "options": [
+          "Functionally identical",
+          "Switch encrypts, router doesn't",
+          "Router directs traffic between networks; switch connects devices within one",
+          "Router only wireless, switch only wired"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "What does a managed switch offer that an unmanaged switch doesn't?",
+        "options": [
+          "Lower cost",
+          "Wireless connectivity",
+          "Faster raw throughput",
+          "VLANs, traffic monitoring, per-port control"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "What does PoE let a network device do?",
+        "options": [
+          "Filter malicious traffic",
+          "Deliver power and data over one cable",
+          "Automatically assign IPs",
+          "Encrypt data in transit"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "2.6",
+    "domain": "2.0",
+    "title": "Configure basic wired/wireless SOHO networks",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "IPv4 addressing is the recurring trap: private vs. public ranges, static vs. dynamic, and APIPA (169.254.x.x) as a 'something's wrong with DHCP' signal.",
+    "checklist": [
+      "IPv4 private vs. public ranges",
+      "IPv6 basics",
+      "APIPA (169.254.x.x)",
+      "Static vs. dynamic addressing",
+      "Subnet mask & gateway"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A workstation shows an IP address of 169.254.15.22 and can't reach the internet or anything else on the network. What does this address tell you, and what's the likely root cause?",
+        "a": "It's an APIPA address — the device failed to get a response from a DHCP server and self-assigned it. Likely cause: the DHCP server is down or unreachable, or a cable/switch port issue is blocking the DHCP request entirely."
+      },
+      {
+        "type": "short",
+        "q": "You're setting up a small office network and need every device to reliably reach the same shared printer at a fixed address. Static or dynamic addressing for the printer, and why?",
+        "a": "Static — shared resources like printers and servers need a predictable address that doesn't change, since other devices and manual configurations pointing to it depend on it staying the same."
+      },
+      {
+        "type": "short",
+        "q": "A client wants to know which private IP range to use for a small home network. Give a typical example, and explain why it's 'private.'",
+        "a": "Something like 192.168.0.0/24 (or 10.0.0.0/8, 172.16.0.0/12) — these ranges aren't routable on the public internet and can be reused by countless networks simultaneously. The router's NAT function translates between this private range and a single public-facing IP."
+      }
+    ]
+  },
+  {
+    "id": "2.7",
+    "domain": "2.0",
+    "title": "Compare and contrast internet connection types, network types, and their characteristics",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Match connection type to scenario (rural = satellite/cellular, office = fiber/cable) rather than memorizing definitions in isolation.",
+    "checklist": [
+      "Satellite, fiber, cable, DSL, cellular, WISP",
+      "LAN, WAN, PAN, MAN, SAN, WLAN"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A rural customer has no cable or fiber access, but there's line-of-sight to a nearby wireless tower. What connection type fits best?",
+        "options": [
+          "Fiber",
+          "WISP",
+          "DSL",
+          "Satellite"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "What network type spans a large geographic area, connecting multiple LANs across cities or countries?",
+        "options": [
+          "WAN",
+          "SAN",
+          "PAN",
+          "LAN"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "A storage array connects to servers over a dedicated high-speed network used only for block-level storage access, not general traffic. What type of network is this?",
+        "options": [
+          "MAN",
+          "WLAN",
+          "LAN",
+          "SAN"
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "id": "2.8",
+    "domain": "2.0",
+    "title": "Explain networking tools and their purposes",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Toner probe vs. cable tester vs. loopback plug get swapped — tie each tool to the specific symptom it diagnoses.",
+    "checklist": [
+      "Crimper",
+      "Cable stripper",
+      "Wi-Fi analyzer",
+      "Toner probe",
+      "Punchdown tool",
+      "Cable tester",
+      "Loopback plug",
+      "Network tap"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A technician needs to trace a specific cable through a wall or ceiling to find where it terminates. Which tool is built for this?",
+        "options": [
+          "Crimper",
+          "Toner probe",
+          "Loopback plug",
+          "Cable tester"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "Which tool attaches an RJ45 connector onto the end of a raw Ethernet cable?",
+        "options": [
+          "Crimper",
+          "Punchdown tool",
+          "Cable stripper",
+          "Network tap"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "A technician wants to passively monitor traffic between two devices without interrupting the connection. What do they insert inline?",
+        "options": [
+          "Wi-Fi analyzer",
+          "Loopback plug",
+          "Network tap",
+          "Cable tester"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "3.1",
+    "domain": "3.0",
+    "title": "Compare and contrast display components and attributes",
+    "roi": false,
+    "confuse": false,
+    "kind": "recall",
+    "tip": "Recall-heavy: panel types (IPS/TN/VA), OLED, and what pixel density/refresh rate actually affect.",
+    "checklist": [
+      "LCD types: IPS, TN, VA",
+      "OLED, Mini-LED",
+      "Touchscreen/digitizer",
+      "Inverter",
+      "Pixel density, refresh rate, resolution, color gamut"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A designer needs the most accurate color reproduction and wide viewing angles for photo editing. Which panel type should they prioritize?",
+        "options": [
+          "TN",
+          "VA",
+          "IPS",
+          "Panel type doesn't affect color accuracy"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "Which display technology produces true blacks by turning off individual pixels entirely, rather than blocking a backlight?",
+        "options": [
+          "TN",
+          "OLED",
+          "VA",
+          "Mini-LED"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "mc",
+        "q": "On older laptops with CCFL backlights, what component converts DC power into the AC needed to drive the backlight?",
+        "options": [
+          "Digitizer",
+          "Panel driver",
+          "Touchscreen controller",
+          "Inverter"
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "id": "3.2",
+    "domain": "3.0",
+    "title": "Summarize basic cable types and their connectors, features, and purposes",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Connector-to-cable matching (ST/SC/LC for fiber, RJ11 vs RJ45) is easy to blur — use a labeled picture reference, not just names.",
+    "checklist": [
+      "Copper categories & T568A/B standards",
+      "Coax, STP, UTP, plenum-rated",
+      "Fiber: single-mode vs. multimode",
+      "Peripheral cables: USB 2.0/3.0, serial, Thunderbolt",
+      "Video cables: HDMI, DisplayPort, DVI, VGA, USB-C",
+      "Drive cables: SATA, eSATA",
+      "Connectors: RJ11, RJ45, ST, SC, LC, Molex, DB9"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which fiber type is designed for long-distance runs using a single light path, typically paired with laser transmitters?",
+        "options": [
+          "Coax",
+          "UTP",
+          "Single-mode",
+          "Multimode"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "A cable needs to run through a building's air handling spaces (above drop ceilings) per fire code. What jacket rating is required?",
+        "options": [
+          "Plenum-rated",
+          "UTP",
+          "STP",
+          "Coax"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "What's the key physical difference between RJ11 and RJ45 connectors?",
+        "options": [
+          "They're identical in size and pin count",
+          "RJ45 is for phone lines, RJ11 for Ethernet",
+          "Both are used exclusively for fiber",
+          "RJ11 is for phone lines with fewer pins; RJ45 is for Ethernet with 8 pins"
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "id": "3.3",
+    "domain": "3.0",
+    "title": "Compare and contrast RAM characteristics",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "ECC vs. non-ECC and SODIMM vs. DIMM form factors are commonly swapped — anchor ECC to 'servers care about error correction.'",
+    "checklist": [
+      "SODIMM vs. DIMM form factors",
+      "DDR generations",
+      "ECC vs. non-ECC",
+      "Channel configurations"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Why would a server prioritize ECC RAM over standard non-ECC RAM?",
+        "options": [
+          "ECC is faster",
+          "ECC only works in laptops",
+          "ECC is cheaper",
+          "ECC detects and corrects single-bit memory errors, improving reliability"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "Installing two identical RAM sticks in matched slots to enable dual-channel mode primarily improves what?",
+        "options": [
+          "Power consumption",
+          "Physical socket compatibility",
+          "Memory bandwidth/throughput",
+          "Memory capacity limit"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "What's the main reason laptops use SODIMM instead of standard DIMM modules?",
+        "options": [
+          "SODIMM's smaller size fits a laptop's limited space",
+          "DIMM isn't compatible with DDR4",
+          "SODIMM supports ECC, DIMM doesn't",
+          "SODIMM is faster than DIMM"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "3.4",
+    "domain": "3.0",
+    "title": "Compare and contrast storage devices",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "RAID levels (0, 1, 5, 6, 10) are the highest-confusion topic in this domain and reliably tested. Know the tradeoff (speed vs. redundancy vs. drives required) for each, not just the number.",
+    "checklist": [
+      "HDD spindle speeds & form factors",
+      "SSD interfaces: NVMe, SATA, PCIe, SAS",
+      "M.2 vs. mSATA form factors",
+      "RAID 0, 1, 5, 6, 10 tradeoffs",
+      "Removable storage & optical drives"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "Which RAID level stripes data across drives for maximum speed but provides zero redundancy — one drive failure loses everything?",
+        "options": [
+          "RAID 1",
+          "RAID 10",
+          "RAID 5",
+          "RAID 0"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "Which RAID level mirrors data across two drives, giving redundancy but effectively halving usable capacity?",
+        "options": [
+          "RAID 5",
+          "RAID 0",
+          "RAID 1",
+          "RAID 6"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "An SSD using NVMe over a PCIe interface offers what key advantage over a SATA SSD?",
+        "options": [
+          "Significantly higher throughput and lower latency than SATA",
+          "Requires no drivers at all",
+          "Always higher capacity",
+          "More compatible with older motherboards"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "3.5",
+    "domain": "3.0",
+    "title": "Install and configure motherboards, CPUs, and add-on cards",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Heavy PBQ territory — practice the actual BIOS/UEFI settings (Secure Boot, TPM, boot order) hands-on if you have lab access.",
+    "checklist": [
+      "Motherboard form factors: ATX, microATX, ITX",
+      "Connector types: PCI, PCIe, SATA, M.2",
+      "CPU socket compatibility: AMD vs. Intel",
+      "BIOS/UEFI: boot options, TPM, Secure Boot, boot/BIOS password",
+      "CPU architecture: x86/x64 vs. ARM",
+      "Expansion cards & cooling methods"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A customer wants to install Windows 11 on an older desktop, but the installer refuses to proceed. What two BIOS/UEFI settings are most likely missing or disabled, and where would you go to enable them?",
+        "a": "TPM and Secure Boot — both are Windows 11 hardware requirements. Enable them in the BIOS/UEFI setup, usually under Security or Advanced settings; TPM might be labeled 'PTT' or 'fTPM' depending on the manufacturer."
+      },
+      {
+        "type": "short",
+        "q": "You're building a small form factor PC and need to choose a motherboard. What's the tradeoff between ITX and a full ATX board?",
+        "a": "ITX is much smaller and fits compact cases, but has fewer expansion slots, fewer RAM slots, and less room for add-on cards. ATX offers more expansion and connectivity but needs a larger case."
+      },
+      {
+        "type": "short",
+        "q": "A customer bought a new AMD CPU, but their existing motherboard won't accept it. What's the most likely reason, and how would you confirm it?",
+        "a": "CPU socket incompatibility — AMD and Intel use different sockets, and even within AMD, socket types change across CPU generations. Confirm by checking the motherboard's supported socket type and CPU compatibility list (usually on the manufacturer's site) against the new CPU's socket."
+      }
+    ]
+  },
+  {
+    "id": "3.6",
+    "domain": "3.0",
+    "title": "Install the appropriate power supply",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Know the standard voltages (3.3V/5V/12V) and what redundant vs. modular actually buys you operationally.",
+    "checklist": [
+      "110-120VAC vs. 220-240VAC input",
+      "Output rails: 3.3V/5V/12V",
+      "20+4 pin connector",
+      "Redundant vs. modular PSU",
+      "Wattage & efficiency rating"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A customer's building a high-end gaming PC with a power-hungry GPU and wants clean cable management in a small case. What PSU feature should they prioritize, and why?",
+        "a": "A modular (or semi-modular) power supply — you only attach the cables you actually need, cutting clutter and improving airflow in a tight case, versus a fully wired PSU with permanently attached cables you're not using."
+      },
+      {
+        "type": "short",
+        "q": "A customer's area gets frequent short power outages that keep restarting their desktop mid-task. What device would you recommend to give them time to save work and shut down safely, and how is it different from a simple surge protector?",
+        "a": "A UPS (Uninterruptible Power Supply) — it has a battery that keeps the system running for a short window during an outage. A surge protector only guards against voltage spikes; it provides zero power during an actual outage."
+      },
+      {
+        "type": "short",
+        "q": "A customer wants to add a new dedicated GPU to their existing build. What's the simple first check regarding the power supply before installing it?",
+        "a": "Confirm the PSU's total wattage and available PCIe power connectors meet or exceed the GPU's minimum requirement (listed by the manufacturer). If the existing PSU is undersized, it needs to be upgraded before the GPU goes in."
+      }
+    ]
+  },
+  {
+    "id": "3.7",
+    "domain": "3.0",
+    "title": "Deploy and configure multifunction devices/printers and settings",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Focus on the security sub-points (user auth, badging, audit logs, secured prints) — these get tested more than driver mechanics.",
+    "checklist": [
+      "Driver types: PCL vs. postscript",
+      "Connectivity: USB, Ethernet, wireless",
+      "Print server/share for shared devices",
+      "Config: duplex, orientation, tray, quality",
+      "Security: user auth, badging, audit logs, secured prints",
+      "Network scan: email, SMB, cloud"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "What are the three basic ways to connect a printer during setup?",
+        "a": "USB (direct connection to one computer), Ethernet (wired network), or wireless (Wi-Fi). The choice depends on whether the printer needs to be shared across the network or just used by one nearby computer."
+      },
+      {
+        "type": "short",
+        "q": "If you want a few computers to share one printer without setting up a dedicated print server, what's the simplest way to do it?",
+        "a": "Enable printer sharing on the computer it's directly connected to, then have the other computers connect to it over the network as a shared device."
+      },
+      {
+        "type": "short",
+        "q": "A user complains that a print job with dense graphics comes out garbled with broken layout, but plain text prints fine. What's a likely driver-related cause?",
+        "a": "Wrong or mismatched driver type — likely using a PCL driver (built for text/simple graphics) when the job needs PostScript, which handles complex graphics and precise layout better. Selecting the correct driver type usually fixes it."
+      }
+    ]
+  },
+  {
+    "id": "3.8",
+    "domain": "3.0",
+    "title": "Perform appropriate printer maintenance",
+    "roi": false,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Match maintenance action to printer type (laser=toner/kit, inkjet=printhead, thermal=heating element, impact=ribbon) — students often apply the wrong fix to the wrong printer type.",
+    "checklist": [
+      "Laser: toner, maintenance kit, calibrate, clean",
+      "Inkjet: cartridge, printhead, roller, feeder",
+      "Thermal: feed assembly, special paper, heating element",
+      "Impact: ribbon, printhead, multipart paper"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A technician notices a laser printer's output has a repeating pattern of dark spots or smudges appearing at regular intervals down the length of each page. Which component is the MOST likely cause, and what's the appropriate remediation?",
+        "a": "The imaging drum — a damaged, worn, or contaminated drum causes repeating defects spaced at intervals matching the drum's circumference. Remediation: replace the drum (often part of the toner cartridge assembly, or a separate component in a maintenance kit)."
+      },
+      {
+        "type": "short",
+        "q": "A technician is troubleshooting a laser printer where toner smears easily and can be wiped off the page, or appears loosely bonded to the paper. Which component is the MOST likely cause, and what's the appropriate remediation?",
+        "a": "The fuser — a failing or under-temperature fuser doesn't properly melt and bond the toner to the page, so it smears or wipes off. Remediation: replace the fuser assembly, typically included in a maintenance kit."
+      },
+      {
+        "type": "short",
+        "q": "A receipt printer at a register stops printing correctly, with blank spots on the paper. What kind of printer is this most likely, and what should you check first?",
+        "a": "A thermal printer — check the heating element and confirm the correct heat-sensitive thermal paper is loaded correctly. Regular paper or the wrong orientation won't react to the heating element."
+      }
+    ]
+  },
+  {
+    "id": "4.1",
+    "domain": "4.0",
+    "title": "Explain virtualization concepts",
+    "roi": false,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "Type 1 (bare-metal) vs. Type 2 (hosted) hypervisors get reversed constantly — anchor Type 1 to 'runs directly on hardware, no host OS.'",
+    "checklist": [
+      "VM purposes: sandbox, test/dev, app virtualization",
+      "Type 1 (bare-metal) vs. Type 2 (hosted) hypervisors",
+      "VDI desktop virtualization",
+      "Containers"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A hypervisor installed directly on server hardware, with no underlying host OS, is classified as which type?",
+        "options": [
+          "Type 2",
+          "Container",
+          "VDI",
+          "Type 1"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "A company wants employees to access a full desktop OS remotely from thin clients, with the actual OS running centrally in the datacenter. What's this technology called?",
+        "options": [
+          "Sandbox",
+          "Type 2 hypervisor",
+          "VDI",
+          "Container"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "mc",
+        "q": "What's the key difference between a container and a traditional VM?",
+        "options": [
+          "Containers share the host OS kernel and are lightweight; VMs each run a full separate guest OS",
+          "No meaningful difference",
+          "Containers require a Type 1 hypervisor, VMs don't",
+          "Containers include a full guest OS, VMs share the host OS"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "id": "4.2",
+    "domain": "4.0",
+    "title": "Summarize cloud computing concepts",
+    "roi": true,
+    "confuse": true,
+    "kind": "recall",
+    "tip": "IaaS vs. PaaS vs. SaaS is the classic confusion pair across every CompTIA exam — 'I manage the OS' vs. 'I manage the app' vs. 'I manage nothing' is the fastest way to sort them.",
+    "checklist": [
+      "Private, public, hybrid, community cloud",
+      "IaaS vs. PaaS vs. SaaS",
+      "Shared vs. dedicated resources",
+      "Metered utilization (ingress/egress)",
+      "Elasticity, availability, multitenancy"
+    ],
+    "recall": [
+      {
+        "type": "mc",
+        "q": "A company uses Gmail for business email, entirely managed by Google with no server or software maintenance on their end. What cloud service model is this?",
+        "options": [
+          "IaaS",
+          "On-premises",
+          "PaaS",
+          "SaaS"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "mc",
+        "q": "A developer rents virtual machines, storage, and networking from a cloud provider, but installs and manages their own OS and applications on top. What service model is this?",
+        "options": [
+          "IaaS",
+          "SaaS",
+          "VDI",
+          "PaaS"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "mc",
+        "q": "A cloud environment automatically scales resources up during high traffic and back down when demand drops, with no manual intervention. What characteristic is being described?",
+        "options": [
+          "Multitenancy",
+          "Community cloud",
+          "Elasticity",
+          "Metered utilization"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": "5.1",
+    "domain": "5.0",
+    "title": "Troubleshoot motherboards, RAM, CPUs, and power",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Symptom-to-cause mapping (POST beep codes, capacitor swelling, random shutdown) — this domain is 28% of the exam, weight your study time accordingly.",
+    "checklist": [
+      "POST beep codes",
+      "Blank screen / no power",
+      "Sluggish performance / overheating",
+      "Random shutdown / app crashes",
+      "Capacitor swelling",
+      "Inaccurate system date/time"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A desktop won't power on at all — no lights, no fans, nothing. Before assuming the motherboard is bad, what two simple things should you check first?",
+        "a": "The power cable/outlet (is it actually getting power — try a different outlet or known-good cable) and the PSU's physical power switch on the back (a 0/1 switch that's easy to accidentally bump off). These are the cheapest, fastest checks before digging further."
+      },
+      {
+        "type": "short",
+        "q": "A computer keeps losing the correct date and time every time it's powered off, even after being manually corrected. What component is likely the cause?",
+        "a": "The CMOS battery — a small coin-cell battery on the motherboard. When it's dead or dying, the board can't retain BIOS settings, including the clock, while powered off."
+      },
+      {
+        "type": "short",
+        "q": "A PC randomly shuts down under heavy load (gaming, video editing) but runs fine for light tasks. What's the likely category of cause, and what would you check first?",
+        "a": "Overheating — check that fans are spinning, heatsinks aren't clogged with dust, and thermal paste hasn't degraded. Also verify the PSU has enough wattage for the load, since an undersized PSU can cause shutdowns under heavy draw too."
+      }
+    ]
+  },
+  {
+    "id": "5.2",
+    "domain": "5.0",
+    "title": "Troubleshoot drive and RAID issues",
+    "roi": true,
+    "confuse": true,
+    "kind": "scenario",
+    "tip": "Connects directly back to 3.4 — if RAID levels were missed there, this objective will be missed too. Study them together.",
+    "checklist": [
+      "LED status indicators",
+      "Grinding/clicking noises",
+      "Bootable device not found",
+      "Data loss/corruption",
+      "RAID failure / S.M.A.R.T. failure",
+      "Missing drives / array missing"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A mechanical hard drive starts making a repeated clicking or grinding noise, and the system becomes unresponsive shortly after. What's the likely explanation, and what should you do first?",
+        "a": "A classic sign of physical drive failure (often called the 'click of death') — the read/write heads may be failing or the platters are damaged. First step: back up any accessible data immediately, since the drive could fail completely at any moment. Don't keep running it hoping it recovers."
+      },
+      {
+        "type": "short",
+        "q": "A RAID 5 array shows one drive as 'failed' in the controller status, but the array is still online and accessible. What should you do, and why is this urgent?",
+        "a": "Replace the failed drive as soon as possible and let the array rebuild. RAID 5 can only tolerate a single drive failure — if a second drive fails before the first is replaced and rebuilt, the entire array and all its data is lost."
+      },
+      {
+        "type": "short",
+        "q": "A system that used to boot fine now shows 'no bootable device found.' What are two likely causes to check, in order of how quick they are to rule out?",
+        "a": "First check the boot order in BIOS/UEFI — a setting change or a newly added drive can shift priority. If that's fine, check whether the boot drive is even detected in BIOS at all; if it's not, that points to a drive or cable/connection failure rather than a settings issue."
+      }
+    ]
+  },
+  {
+    "id": "5.3",
+    "domain": "5.0",
+    "title": "Troubleshoot video, projector, and display issues",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Mostly straightforward symptom matching — cabling and input source issues are the most commonly tested.",
+    "checklist": [
+      "Incorrect input source",
+      "Cabling issues",
+      "Burnt-out bulb",
+      "Fuzzy/distorted image",
+      "Dead pixels / burn-in",
+      "Dim image / flashing screen"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A conference room projector shows a blue 'no signal' screen even though a laptop is plugged in and powered on. What's the most common cause to check first?",
+        "a": "The projector's input source setting — it's likely set to a different input (HDMI2, VGA, etc.) than the one the laptop is actually connected to. Cycling through inputs on the remote/menu usually resolves it before you assume a hardware fault."
+      },
+      {
+        "type": "short",
+        "q": "An older projector's image has become noticeably dim compared to before. What component is the likely cause, and what's the fix?",
+        "a": "The projector bulb (lamp) — it naturally dims and eventually burns out with use; most are rated for a set number of hours. The fix is replacing the bulb, a routine maintenance item rather than a sign of bigger hardware failure."
+      },
+      {
+        "type": "short",
+        "q": "A monitor shows a single pixel that's always black no matter what's on screen, while everything else displays normally. What's this called, and is it typically repairable?",
+        "a": "A dead pixel — the pixel itself has failed and isn't receiving power/signal correctly. It's generally not fixable through software; it would require panel replacement, which usually isn't cost-effective for a single pixel."
+      }
+    ]
+  },
+  {
+    "id": "5.4",
+    "domain": "5.0",
+    "title": "Troubleshoot common mobile device issues",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Ties back to 1.1 — battery and charging symptoms repeat across both objectives.",
+    "checklist": [
+      "Poor/swollen battery",
+      "Broken screen / digitizer issues",
+      "Poor connectivity",
+      "Liquid damage",
+      "Overheating",
+      "Malware",
+      "Degraded performance"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's phone case no longer sits flush against the back of the phone, and the phone feels warm even when idle. What should you check immediately, and why is this urgent?",
+        "a": "Check the battery for swelling — a swollen battery pushes the back panel outward and can make the device feel warm. This is urgent because a swollen lithium battery is a fire/safety hazard, not just a performance issue; power the device off and address the battery right away."
+      },
+      {
+        "type": "short",
+        "q": "A phone's touchscreen registers taps in the wrong location, or doesn't respond in certain areas, even though the display shows images correctly. What component is likely at fault?",
+        "a": "The digitizer — a separate layer from the display panel that detects touch input. It can fail or get damaged (often from a drop) independently of the screen still displaying correctly."
+      },
+      {
+        "type": "short",
+        "q": "A user's phone fell in a puddle. It powers on but behaves erratically — random restarts, apps crashing. What's the appropriate immediate action, and why?",
+        "a": "Power it off immediately and don't attempt to charge it — liquid damage can cause a short circuit that gets worse with continued power or charging. Let it dry completely (ideally get it professionally assessed) before attempting to power it back on."
+      }
+    ]
+  },
+  {
+    "id": "5.5",
+    "domain": "5.0",
+    "title": "Troubleshoot network issues",
+    "roi": true,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Practice distinguishing similar-sounding symptoms: intermittent connectivity vs. limited connectivity vs. high latency each point to a different root cause.",
+    "checklist": [
+      "Intermittent wireless connectivity",
+      "Slow speeds / limited connectivity",
+      "Jitter / high latency",
+      "Poor VoIP quality",
+      "Port flapping",
+      "Authentication failures"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "A user's Wi-Fi drops and reconnects every few minutes throughout the day, but works fine when plugged in via Ethernet. What are two likely causes to investigate?",
+        "a": "Wireless interference (other devices/networks on the same channel, or physical obstructions/distance from the AP) and outdated or flaky Wi-Fi drivers/firmware on the device or access point. Since wired works fine, the issue is isolated to the wireless path specifically."
+      },
+      {
+        "type": "short",
+        "q": "During a VoIP call, the user hears choppy audio with words cutting in and out, though the call never fully drops. What network condition is most likely responsible?",
+        "a": "Jitter (variable latency) — VoIP is highly sensitive to inconsistent packet arrival timing, even when overall bandwidth seems fine. This is different from a bandwidth shortage, which would more likely cause a full disconnect or severe lag rather than choppiness."
+      },
+      {
+        "type": "short",
+        "q": "A switch port's status light keeps rapidly turning on and off, and monitoring shows the port going up and down repeatedly. What's this called, and what's a common cause?",
+        "a": "Port flapping — commonly caused by a bad cable, a failing NIC on the connected device, or a duplex/speed mismatch between the switch port and the device."
+      }
+    ]
+  },
+  {
+    "id": "5.6",
+    "domain": "5.0",
+    "title": "Troubleshoot printer issues",
+    "roi": false,
+    "confuse": false,
+    "kind": "scenario",
+    "tip": "Direct extension of 3.7/3.8 — if those were missed, review them alongside this objective.",
+    "checklist": [
+      "Lines/garbled/faded prints",
+      "Paper jams / feed issues",
+      "Multiple prints pending / frozen queue",
+      "Speckling / double images",
+      "Grinding noise",
+      "Incorrect orientation",
+      "Connectivity issues"
+    ],
+    "recall": [
+      {
+        "type": "short",
+        "q": "Several print jobs are stuck in the queue and nothing will print, even after restarting the job. What's the standard troubleshooting sequence to clear this?",
+        "a": "Stop and restart the Print Spooler service, clearing any stuck jobs from the queue folder if needed, then try printing again. This resolves the vast majority of 'stuck queue' issues without touching the printer itself."
+      },
+      {
+        "type": "short",
+        "q": "A page prints with text or images doubled or ghosted, slightly offset from the original, almost like a shadow. What's this symptom called, and what part of the printer usually needs attention?",
+        "a": "Ghosting (or doubling) — on a laser printer, it usually points to a worn or damaged drum unit that isn't fully discharging between print cycles, causing a faint repeat image spaced at intervals matching the drum."
+      },
+      {
+        "type": "short",
+        "q": "A printer that used to work over the network suddenly can't be found by any computer, though its display shows it's powered on and idle. What's the first thing to check?",
+        "a": "Confirm the printer still has a valid, unchanged IP address and is actually connected to the network (cable seated, or Wi-Fi still associated). A DHCP lease renewal assigning a new IP is a very common cause of a printer 'disappearing' from clients still pointing to the old address."
+      }
+    ]
+  }
+]
